@@ -1,12 +1,10 @@
 <template>
-  <div class="main-container">
-    <div class="preview-container">
-      <svg :width="getRealSize()" :height="getRealSize()">
-        <circle :cx="getRealCenterPosition()" :cy="getRealCenterPosition()" :r="radius" :stroke="strokeColor" :stroke-width="strokeWidth" :fill="backgroundColor" />
-        <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" :fill="textColor">{{text}}</text>
-      </svg>
-    </div>  
-  </div>
+  <g>
+    <svg :width="getRealSize()" :height="getRealSize()" :x="cx" :y="cy">
+      <circle :cx="getRealCenterPosition()" :cy="getRealCenterPosition()" :r="radius" :stroke="strokeColor" :stroke-width="strokeWidth" :fill="backgroundColor" />
+      <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" :fill="textColor">{{text}}</text>
+    </svg>
+  </g>
 </template>
 
 <script>
@@ -45,18 +43,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-  }
-  .preview-container {
-    max-width: 600px;
-    max-height: 500px;
-    min-width: 400px;
-    width: 100vw;
-    height: 100vh;
-  }
 </style>
