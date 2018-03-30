@@ -12,16 +12,18 @@
 import * as d3 from 'd3'
 export default {
   name: 'CustomCircle',
+  props: [
+    'radius',
+    'text',
+    'cx',
+    'cy',
+    'backgroundColor',
+    'textColor'
+  ],
   data () {
     return {
-      radius: 50,
-      cx: 0,
-      cy: 0,
-      backgroundColor: "#ff3399",
-      text: "Sample Text",
       fontSize: 12,
-      textColor: "#00ff00",
-      strokeWidth: 2,
+      strokeWidth: 1,
       strokeColor:"#000000",
     }
   },
@@ -36,7 +38,7 @@ export default {
     },
     getRealCenterPosition(){
       return this.radius + 1
-    } 
+    }
   }
 }
 </script>

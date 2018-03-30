@@ -1,9 +1,21 @@
 <template>
   <div class="main-container">
     <h1>{{msg}}</h1>
-    <svg width="100%" height="100%">
-      <CustomCircle/>
+    <div class="form-group">
+      <label for="code">Please input the text: </label>
+      <input type="text" class="form-control input-normal" v-model="svgText">
+    </div>
+    <svg width="100%" height="500">
+      <CustomCircle :text="svgText" :cx="100" :cy="100"  :radius="50" :backgroundColor="'yellow'" :textColor="'red'" />
+      <CustomCircle :text="svgText" :cx="200" :cy="200"  :radius="100" :backgroundColor="'#eeaaff'" :textColor="'black'" />
     </svg>  
+      <code>
+        {{tag1}}
+      </code>
+      <code>
+        {{tag2}}
+      </code>
+    
   </div>
 </template>
 
@@ -15,7 +27,10 @@ export default {
   name: 'ParentCanvas',
   data () {
     return {
-      msg: "Thank you!!!",
+      msg: "Please check me.",
+      svgText: "Sample Text",
+      tag1: '<CustomCircle :text="svgText" :cx="100" :cy="100"  :radius="50" :backgroundColor="\'yellow\'" :textColor="\'red\'" />',
+      tag2: '<CustomCircle :text="svgText" :cx="200" :cy="200"  :radius="100" :backgroundColor="\'#eeaaff\'" :textColor="\'black\'" />"'
     }
   },
   components: {
@@ -27,6 +42,7 @@ export default {
   methods: {
     load: function () {
     },
+
   }
 }
 </script>
@@ -39,12 +55,5 @@ export default {
     align-items: center;
     width: 100%;
     text-align: center;
-  }
-  .preview-container {
-    max-width: 600px;
-    max-height: 500px;
-    min-width: 400px;
-    width: 100vw;
-    height: 100vh;
   }
 </style>
