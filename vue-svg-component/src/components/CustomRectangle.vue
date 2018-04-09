@@ -1,22 +1,25 @@
 <template>
   <g>
-    <svg :width="getRealSize()" :height="getRealSize()" :x="cx" :y="cy">
-      <circle :cx="getRealCenterPosition()" :cy="getRealCenterPosition()" :r="radius" :stroke="strokeColor" :stroke-width="strokeWidth" :fill="backgroundColor" />
+    <svg :width="dx+strokeWidth*2" :height="dy+strokeWidth*2" :x="cx-dx/2" :y="cy-dy/2">
+      <rect :x="strokeWidth" :y="strokeWidth" :width="dx-strokeWidth" :height="dy-strokeWidth" :stroke="strokeColor" :stroke-width="strokeWidth" :fill="backgroundColor"/>
       <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" :fill="textColor" :font-size="fontSize">{{text}}</text>
-    </svg>
+    </svg>  
   </g>
+
 </template>
 
 <script>
 
 import * as d3 from 'd3'
 export default {
-  name: 'CustomCircle',
+  name: 'CustomRectangle',
   props: [
     'radius',
     'text',
     'cx',
     'cy',
+    'dx',
+    'dy',
     'backgroundColor',
     'textColor',
     'strokeColor'
@@ -25,6 +28,8 @@ export default {
     return {
       fontSize: 12,
       strokeWidth: 1,
+      minX: 0,
+      minY: 0,
     }
   },
   mounted () {
@@ -33,13 +38,7 @@ export default {
   methods: {
     load: function () {
     },
-    getRealSize(){
-      return (this.radius + this.strokeWidth) * 2
-    },
-    getRealCenterPosition(){
-      return this.radius + 1
-    }
-  }
+   }
 }
 </script>
 
